@@ -1,4 +1,4 @@
-let snake, posX, posY, dir, addBody, tail, diamond, diamondPosX, diamondPosY, diamondPenality
+let snake, posX, posY, dir, addBody, tail, diamond, diamondPosX, diamondPosY, diamondPenality, tailElement
 
 init();
 
@@ -18,6 +18,11 @@ function init(){
   addBody = 4
   // pour initialiser la direction du snake au démarrage
   dir=1
+
+  //ajout de la div tail qui retiendra les éléments de la queue
+  tailElement = document.createElement("div")
+  tailElement.setAttribute("id", "tail")
+  document.querySelector("body").appendChild(tailElement)
 
 
   // créer un diamond
@@ -56,6 +61,8 @@ function startGame(){
   //deplacer le snake.
   let move = setInterval(
     function(){
+      let oldposX = posX
+      let oldposY = posY
       switch(dir)
       {
           case 0:
@@ -71,7 +78,8 @@ function startGame(){
               posX -= 10
               break;
       }
-      posSnake();
+      posSnake()
+      manageTail(oldposX, oldposY)
     },
     40
   )
@@ -95,3 +103,17 @@ window.addEventListener("keypress",function(e){
 
   }
 })
+
+function manageTail(oldposX, oldposY){
+  // créer la nouvelle et la positionner.
+  let newTailElement = document.createElement("div")
+  newTailElement.style.top = oldposY + "px"
+  newTailElement.style.left = oldposX + "px"
+  newTailElement.setAttribute("id", `t${oldposX}_${oldposY}`)
+  // ajouter la nouvelle div au tableau.
+
+  // Si addBody est = 0
+    // retirer le dernier élément de la queue.
+  // Sinon retirer 1 à addBody
+
+}
