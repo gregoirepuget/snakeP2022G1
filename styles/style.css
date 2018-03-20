@@ -1,0 +1,20 @@
+#snake{
+  width:10px;
+  height:10px;
+  position:absolute;
+  background:#2980b9;
+}
+
+#tail div{
+  width:10px;
+  height:10px;
+  position:absolute;
+  background:#3498db;
+}
+
+#diamond{
+  width:10px;
+  height:10px;
+  position:absolute;
+  background:#f39c12;
+}
