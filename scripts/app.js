@@ -14,11 +14,17 @@ function init(){
   document.querySelector("body").appendChild(snake)
   posSnake()
 
+  // pour augmenter la queue du snake au démarrage
+  addBody = 4
+  // pour initialiser la direction du snake au démarrage
+  dir=1
+
 
   // créer un diamond
   createDiamond()
 
   // lancer la partie
+  startGame()
 
 }
 function posSnake () {
@@ -44,3 +50,48 @@ function posDiamond() {
   diamond.style.top = diamondPosY + "px"
   diamond.style.left = diamondPosX + "px"
 }
+
+function startGame(){
+
+  //deplacer le snake.
+  let move = setInterval(
+    function(){
+      switch(dir)
+      {
+          case 0:
+              posY -= 10
+              break;
+          case 1:
+              posX += 10
+              break;
+          case 2:
+              posY += 10
+              break;
+          case 3:
+              posX -= 10
+              break;
+      }
+      posSnake();
+    },
+    40
+  )
+
+}
+
+window.addEventListener("keypress",function(e){
+  switch(e.keyCode){
+    case 122:
+      dir = 0
+      break;
+    case 100:
+      dir = 1
+      break;
+    case 115:
+      dir = 2
+      break;
+    case 113:
+      dir = 3
+      break;
+
+  }
+})
