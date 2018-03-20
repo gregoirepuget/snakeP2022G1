@@ -25,6 +25,7 @@ function init(){
   document.querySelector("body").appendChild(tailElement)
 
 
+
   // créer un diamond
   createDiamond()
 
@@ -110,8 +111,8 @@ function manageTail(oldposX, oldposY){
   newTailElement.style.top = oldposY + "px"
   newTailElement.style.left = oldposX + "px"
   newTailElement.setAttribute("id", `t${oldposX}_${oldposY}`)
+  tailElement.appendChild(newTailElement)
   // ajouter la nouvelle div au tableau.
-
   // Si addBody est = 0
     // retirer le dernier élément de la queue.
   // Sinon retirer 1 à addBody
