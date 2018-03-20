@@ -82,7 +82,7 @@ function startGame(){
       posSnake()
       manageTail(oldposX, oldposY)
     },
-    40
+    10
   )
 
 }
@@ -114,7 +114,17 @@ function manageTail(oldposX, oldposY){
   tailElement.appendChild(newTailElement)
   // ajouter la nouvelle div au tableau.
   // Si addBody est = 0
+  if(addBody == 0){
+    tailElement.removeChild(document.querySelector("#tail div:first-child"))
+  }
+  else{
+    addBody--
+  }
     // retirer le dernier élément de la queue.
   // Sinon retirer 1 à addBody
-
+  if(posX == diamondPosX && posY == diamondPosY){
+    addBody += 10
+    document.querySelector("body").removeChild(diamond)
+    createDiamond()
+  }
 }
